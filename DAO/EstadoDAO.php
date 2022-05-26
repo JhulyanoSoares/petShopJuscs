@@ -42,10 +42,12 @@ include_once '../model/EstadoModel.php';
         }
 
         public static function editar($estado){
-            $sql = "UPDATE estado SET"."nome = '".$estado->getNome()."',"
+            $sql = "UPDATE estado SET "
+                    ."nome = '".$estado->getNome()."',"
                     ."uf = '".$estado->getUf()."',"
-                    ."id_pais = '".$estado->getPais()."',"
+                    ."id_pais = '".$estado->getPais()."'"
                     ."WHERE id = ".$estado->getId();
+                    echo ($sql);
             Conexao::executar($sql);
         }
 
