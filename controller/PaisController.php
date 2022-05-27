@@ -12,5 +12,19 @@ include_once '../DAO/PaisDAO.php';
         echo $pais->getNome().'    '.$pais->getSigla();
 
         PaisDAO::inserir($pais);
+
+        header("Location: ../view/FrmPais_cadastro.php");
+    }
+
+    if($_REQUEST['editar']){
+
+        $pais = new Pais();
+        $pais->setId($_POST['id']);
+        $pais->setNome($_POST['nomePais']);
+        $pais->setSigla($_POST['sigla']);
+
+        PaisDAO::editar($pais);
+
+        header("Location: ../view/FrmPais_cadastro.php");
     }
 ?>

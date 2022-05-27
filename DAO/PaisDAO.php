@@ -11,19 +11,43 @@ include_once '../model/PaisModel.php';
         }
         
         public static function buscar(){
-            $sql = "SELECT id, nome FROM pais ORDER BY nome";
+            $sql = "SELECT id, nome, sigla FROM pais ORDER BY nome";
             $result = Conexao::consultar($sql);
             $lista = new ArrayObject();
             if($result != null){
-                while(list($_id, $_nome) = mysqli_fetch_row($result)){
+                while(list($_id, $_nome, $_sigla) = mysqli_fetch_row($result)){
                     $pais = new Pais();
                     $pais->setId($_id);
                     $pais->setNome($_nome);
+                    $pais->setSigla($_sigla);
                     $lista->append($pais);
                 }
             }
             return $lista;
         }
+
+        public static function buscarPorId($id){
+            $sql = "SELECT id, nome, sigla FROM pais WHERE id=".$id;
+            $result = Conexao::consultar($sql);
+            if($result != null){
+                list($_id, $_nome, $_sigla) = mysqli_fetch_row($result);
+                    $pais = new Pais();
+                    $pais->setId($_id);
+                    $pais->setNome($_nome);
+                    $pais->setSigla($_sigla);
+            }
+            return $pais;
+        }
+
+        public static function editar($pais){
+            $sql = "UPDATE pais SET "
+                    ."nome = '".$pais->getNome()."',"
+                    ."sigla = '".$pais->getSigla()."',"
+                    ."WHERE id = ".$pais->getId();
+                    echo ($sql);
+            Conexao::executar($sql);
+        }
+
     }
 
 ?>

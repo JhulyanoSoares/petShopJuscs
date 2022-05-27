@@ -78,16 +78,14 @@
                             echo '<td>'.$estado->getUf().'</td>';
                             echo '<td>'.$estado->getPais().'</td>';
                             echo '<td><a href="FrmEstado_cadastro.php?editar&id='.$estado->getId().'">
-                            <button> Editar </button></a></td>';
+                            <button class="btn btn-warning"> Editar <img src="icons/table_edit.png"> </button></a></td>';
                             echo '<td><a href="../controller/EstadoController.php?excluir&id='.$estado->getId().'">
-                            <button> Excluir </button></a></td>';
+                            <button class="btn btn-danger"> Excluir <img src="icons/table_delete.png"> </button></a></td>';
                             echo '</tr>';
                         }
                     ?>
                 </tbody>
             </table><br/><br/>
-            <button name="btnAlterar2" class="btn btn-warning"> Alterar <img src="icons/table_edit.png"> </button>
-            <button name="btnRemover2" class="btn btn-danger"> Remover <img src="icons/table_delete.png"> </button>
         </div>
     
     </body>
