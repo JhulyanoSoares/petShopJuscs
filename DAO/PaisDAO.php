@@ -42,12 +42,17 @@ include_once '../model/PaisModel.php';
         public static function editar($pais){
             $sql = "UPDATE pais SET "
                     ."nome = '".$pais->getNome()."',"
-                    ."sigla = '".$pais->getSigla()."',"
+                    ."sigla = '".$pais->getSigla()."'"
                     ."WHERE id = ".$pais->getId();
                     echo ($sql);
             Conexao::executar($sql);
         }
 
+        public static function excluir($id){
+            $sql = "DELETE FROM pais WHERE id=".$id;
+            echo $sql;
+            Conexao::executar($sql);
+        }
     }
 
 ?>

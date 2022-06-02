@@ -11,16 +11,25 @@ include_once '../model/EstadoModel.php';
         }
         
         public static function buscar(){
-            $sql = "SELECT id, nome, uf, id_pais FROM estado ORDER BY nome";
+            $sql = "SELECT e.id, e.nome, e.uf, e.id_pais, p.nome, p.sigla" 
+                    ." FROM estado e, pais p"
+                    ." WHERE p.id = e.id_pais" 
+                    ." ORDER BY e.nome";
             $result = Conexao::consultar($sql);
             $lista = new ArrayObject();
             if($result != null){
-                while(list($_id, $_nome, $_uf, $_pais) = mysqli_fetch_row($result)){
+                while(list($_id, $_nome, $_uf, $_idPais, $_nomePais, $_siglaPais)
+                 = mysqli_fetch_row($result)){
+                    $pais = new Pais();
+                    $pais->setId($_idPais);
+                    $pais->setNome($_nomePais);
+                    $pais->setSigla($_siglaPais);
+
                     $estado = new Estado();
                     $estado->setId($_id);
                     $estado->setNome($_nome);
                     $estado->setUf($_uf);
-                    $estado->setPais($_pais);
+                    $estado->setPais($pais);
                     $lista->append($estado);
                 }
             }
@@ -48,6 +57,11 @@ include_once '../model/EstadoModel.php';
                     ."id_pais = '".$estado->getPais()."'"
                     ."WHERE id = ".$estado->getId();
                     echo ($sql);
+            Conexao::executar($sql);
+        }
+
+        public static function excluir($id){
+            $sql = "DELETE FROM estado WHERE id=".$id;
             Conexao::executar($sql);
         }
 

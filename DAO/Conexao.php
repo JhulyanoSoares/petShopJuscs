@@ -3,7 +3,7 @@
 class Conexao{
 
     public static function abrir(){
-        $banco = "petshop";
+        $banco = "petshop_juscs";
         $local = "localhost";
         $usuario = "root";
         $senha = "";

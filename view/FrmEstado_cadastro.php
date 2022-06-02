@@ -76,7 +76,7 @@
                             echo '<tr>';
                             echo '<td>'.$estado->getNome().'</td>';
                             echo '<td>'.$estado->getUf().'</td>';
-                            echo '<td>'.$estado->getPais().'</td>';
+                            echo '<td>'.$estado->getPais()->getNome().'</td>';
                             echo '<td><a href="FrmEstado_cadastro.php?editar&id='.$estado->getId().'">
                             <button class="btn btn-warning"> Editar <img src="icons/table_edit.png"> </button></a></td>';
                             echo '<td><a href="../controller/EstadoController.php?excluir&id='.$estado->getId().'">
@@ -86,6 +86,7 @@
                     ?>
                 </tbody>
             </table><br/><br/>
+            
         </div>
     
     </body>

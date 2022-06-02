@@ -8,7 +8,7 @@
     if(isset($_REQUEST['editar'])){
         $pais = PaisDAO::buscarPorId($_GET['id']);
         $nome = $pais->getNome();
-        $uf = $pais->getSigla();
+        $sigla = $pais->getSigla();
         $action = "editar&id=".$pais->getId();
     }
 ?>
