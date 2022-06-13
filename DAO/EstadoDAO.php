@@ -13,7 +13,7 @@ include_once '../model/EstadoModel.php';
         public static function buscar(){
             $sql = "SELECT e.id, e.nome, e.uf, e.id_pais, p.nome, p.sigla" 
                     ." FROM estado e, pais p"
-                    ." WHERE p.id = e.id_pais" 
+                    ." WHERE p.id = e.id_pais"
                     ." ORDER BY e.nome";
             $result = Conexao::consultar($sql);
             $lista = new ArrayObject();

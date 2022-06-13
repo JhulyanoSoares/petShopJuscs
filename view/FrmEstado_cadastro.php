@@ -61,6 +61,7 @@
             $lista = EstadoDAO::buscar();
 
         ?>
+        
         <div class="container border">
             <table class="table">
                 <thead>    
