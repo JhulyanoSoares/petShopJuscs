@@ -18,11 +18,11 @@
         <div class="container border">
             <h1>Jusc's Petshop</h1><br/>
             <h2>Menu principal</h2><br/>
-            <a href="Cidade_cadastro.html" name="btnCadCidade" class="btn btn-dark"> Cadastrar Cidade <img src=icons/add.png> </a>
-            <a href="Estado_cadastro.html" name="btnCadEstado" class="btn btn-secondary"> Cadastrar Estado <img src=icons/add.png> </a><br/><br/>
-            <a href="País_cadastro.html" name="btnCadPais" class="btn btn-secondary"> Cadastrar País <img src=icons/add.png> </a>
-            <a href="Cliente_cadastro.html" name="btnCadCliente" class="btn btn-dark"> Cadastrar Cliente <img src=icons/user_add.png> </a><br/><br/>
-            <a href="Agenda.html" name="btnAgenda" class="btn btn-warning"> Agendar<img src="icons/clock_add.png"><img src="icons/calendar_add.png"> 
+            <a href="FrmCidade_cadastro.php" name="btnCadCidade" class="btn btn-dark"> Cadastrar Cidade <img src=icons/add.png> </a>
+            <a href="FrmEstado_cadastro.php" name="btnCadEstado" class="btn btn-secondary"> Cadastrar Estado <img src=icons/add.png> </a><br/><br/>
+            <a href="FrmPais_cadastro.php" name="btnCadPais" class="btn btn-secondary"> Cadastrar País <img src=icons/add.png> </a>
+            <a href="FrmCliente_cadastro.php" name="btnCadCliente" class="btn btn-dark"> Cadastrar Cliente <img src=icons/user_add.png> </a><br/><br/>
+            <a href="FrmAgenda.php" name="btnAgenda" class="btn btn-warning"> Agendar<img src="icons/clock_add.png"><img src="icons/calendar_add.png"> 
                 /Desmarcar <img src="icons/clock_delete.png"><img src="icons/calendar_delete.png"> </a>
         </div>
 

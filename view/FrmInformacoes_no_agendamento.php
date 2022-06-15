@@ -1,3 +1,7 @@
+<?php
+    include_once '../DAO/PetDAO.php';
+?>
+
 <html>
 
     <header>
@@ -35,12 +39,21 @@
                 <button class="btn btn-primary"> Pesquisar(por CPF) <img src="icons/magnifier.png"> </button><br/><br/>
                 <label>Lista de pets:</label>
                 <select id="listaPets" name="listaPets" class="form-select">
-                    <option>selecione o pet</option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
+                    <option>Selecione o pet</option>
+                    <?php
+                        $lista = PetDAO::buscar();
+                        //var_dump($lista);
+                        foreach($lista as $pet){
+                            $selecionar = "";
+                            if($idPet == $pet->getId()){
+                                $selecionar = "selected";
+                            }
+                            echo '<option '.$selecionar.' value="'.$pet->getId().'">
+                            '.$pet->getNome().'</option>';
+                        }
+                    ?>
                 </select><br/><br/>
-                <label>Informe sua Senha para finalizar o agendamento</label><input type="password" id="senha" name="senha" class="form-control"><br/><br/>
+                <label>Informe sua Senha para finalizar o agendamento</label><input type="password" id="senha" name="senha" class="form-control" required><br/><br/>
                 <button class="btn btn-success"> Agendar <img src="icons/accept.png"> </button>
             </form>
         </div>

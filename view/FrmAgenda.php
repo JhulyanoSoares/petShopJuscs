@@ -23,7 +23,7 @@
                 </select><br/>
                 
                 
-                <a href="Informacoes_no_agendamento.html" type="button" name="btnAgendar" class="btn btn-success"> Agendar <img src="icons/accept.png"> </a><br/><br/>
+                <a href="FrmInformacoes_no_agendamento.php" type="button" name="btnAgendar" class="btn btn-success"> Agendar <img src="icons/accept.png"> </a><br/><br/>
             </form>
             <form>
                 <label>Desmarcar horário</label>

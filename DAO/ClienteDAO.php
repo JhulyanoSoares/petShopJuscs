@@ -5,7 +5,7 @@ include_once '../model/ClienteModel.php';
     class ClienteDAO{
 
         public static function inserir($cliente){
-            $sql = "INSERT INTO cliente (nome, nacionalidade, cpf, email, telefone, rua, numero, id_cidade, complemento) VALUES"
+            $sql = "INSERT INTO cliente (nome, nacionalidade, cpf, email, telefone, rua, numero, cidade, complemento) VALUES"
             ."('".$cliente->getNome()."','".$cliente->getNacionalidade()."','".$cliente->getCpf()."','".$cliente->getEmail()."',
             '".$cliente->getTelefone()."','".$cliente->getRua()."','".$cliente->getNumero()."','".$cliente->getCidade()."',
             '".$cliente->getComplemento()."');";
@@ -13,19 +13,20 @@ include_once '../model/ClienteModel.php';
         }
         
         public static function buscar(){
-            $sql = "SELECT l.id, l.nome, l.nacionalidade, l.cpf, l.email, l.telefone, l.rua, l.numero, l.id_cidade, l.complemento,
+            $sql = "SELECT l.id, l.nome, l.cpf, l.email, l.telefone, l.rua, l.numero,
+             l.cidade, l.complemento, l.nacionalidade, 
             c.nome, c.id_estado, c.id_pais, c.cep" 
                     ." FROM cliente l, cidade c"
-                    ." WHERE c.id = l.id_cidade"
+                    ." WHERE c.id = l.cidade"
                     ." ORDER BY l.nome";
             $result = Conexao::consultar($sql);
             $lista = new ArrayObject();
             if($result != null){
-                while(list($_id, $_nome, $_nacionalidade, $_cpf, $_email, $_telefone, $_rua, $_numero, $_idCidade, $_complemento, 
-                $_nomeCidade, $_estadoCidade, $_paisCidade, $_cepCidade)
+                while(list($_id, $_nome, $_cpf, $_email, $_telefone, $_rua, $_numero, $_cidade, $_complemento, 
+                $_nacionalidade, $_nomeCidade, $_estadoCidade, $_paisCidade, $_cepCidade)
                  = mysqli_fetch_row($result)){
                     $cidade = new Cidade();
-                    $cidade->setId($_idCidade);
+                    $cidade->setId($_cidade);
                     $cidade->setNome($_nomeCidade);
                     $cidade->setEstado($_estadoCidade);
                     $cidade->setPais($_paisCidade);
@@ -34,13 +35,13 @@ include_once '../model/ClienteModel.php';
                     $cliente = new Cliente();
                     $cliente->setId($_id);
                     $cliente->setNome($_nome);
-                    $cliente->setNacionalidade($_nacionalidade);
                     $cliente->setCpf($_cpf);
                     $cliente->setEmail($_email);
                     $cliente->setTelefone($_telefone);
                     $cliente->setRua($_rua);
                     $cliente->setNumero($_numero);
                     $cliente->setCidade($cidade);
+                    $cliente->setNacionalidade($_nacionalidade);
                     $cliente->setComplemento($_complemento);
                     $lista->append($cliente);
                 }

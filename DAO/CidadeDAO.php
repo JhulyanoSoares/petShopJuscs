@@ -2,6 +2,10 @@
 
     include_once 'Conexao.php';
     include_once '../model/CidadeModel.php';
+    include_once '../model/PaisModel.php';
+    include_once '../model/EstadoModel.php';
+
+
 
     class CidadeDAO{
 
@@ -42,6 +46,7 @@
                     $lista->append($cidade);
                 }
             }
+            var_dump($lista);
             return $lista;
         }
 
